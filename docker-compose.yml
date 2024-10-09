@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:16
+    networks:
+      - redeburguers
+    environment:
+      POSTGRES_USER: fiap
+      POSTGRES_PASSWORD: fiap
+      POSTGRES_DB: 18Burguers
+    ports:
+      - "5432:5432"
+
+#  app:
+#    links:
+#      - db
+#    environment:
+#      DB_USER: fiap
+#      DB_PASSWORD: fiap
+#      DB: jdbc:postgresql://db:5432/18Burguers
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    networks:
+#      - redeburguers
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - db
+
+networks:
+  redeburguers:
+    driver: bridge

@@ -1,9 +1,10 @@
 package br.com.eighteenburguers.order.core.usecase;
 
-import java.util.List;
-
+import br.com.eighteenburguers.order.core.PageData;
+import br.com.eighteenburguers.order.core.Pageable;
 import br.com.eighteenburguers.order.core.entity.Product;
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
+import br.com.eighteenburguers.order.core.valueobject.product.ProductFilter;
 
 public class FindProductsUseCaseImpl implements FindProductsUseCase {
 
@@ -15,8 +16,8 @@ public class FindProductsUseCaseImpl implements FindProductsUseCase {
 	}
 
 	@Override
-	public List<Product> execute() {
-		return repository.findAll();
+	public PageData<Product> execute(ProductFilter filter, Pageable pageable) {
+		return repository.findAll(filter, pageable);
 	}
 
 }
