@@ -4,29 +4,26 @@ import java.util.stream.Stream;
 
 public enum Category {
 
-    LANCHE(1, "Lanche"),
-    ACOMPANHAMENTO(2, "Acompanhamento"),
-    BEBIDA(3, "Bebida"),
-    SOBREMESA(4, "Sobremesa");
+	LANCHE(1, "Lanche"), ACOMPANHAMENTO(2, "Acompanhamento"), BEBIDA(3, "Bebida"), SOBREMESA(4, "Sobremesa");
 
-    private int codigo;
-    private String descricao;
+	private Integer code;
+	private String description;
 
-    private Category(int codigo, String descricao) {
-        this.codigo = codigo;
-        this.descricao = descricao;
-    }
+	private Category(int code, String description) {
+		this.code = code;
+		this.description = description;
+	}
 
-    public Integer getCodigo() {
-        return codigo;
-    }
+	public Integer getCode() {
+		return code;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public static Category ofCode(Integer code) {
-        return Stream.of(Category.values()).filter(item -> item.getCodigo().equals(code))
-            .findFirst().orElseThrow(IllegalArgumentException::new);
-    }
+	public static Category ofCode(Integer code) {
+		return Stream.of(Category.values()).filter(item -> item.getCode().equals(code)).findFirst()
+				.orElseThrow(IllegalArgumentException::new);
+	}
 }
