@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
-import br.com.eighteenburguers.order.core.Pageable;
+import br.com.eighteenburguers.order.core.valueobject.pagination.Pageable;
 
 @ExtendWith(MockitoExtension.class)
 class PageableTest {

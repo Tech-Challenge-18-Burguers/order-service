@@ -8,7 +8,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-import br.com.eighteenburguers.order.core.entity.Category;
+import br.com.eighteenburguers.order.core.entity.product.Category;
 
 @Data
 @Entity(name = "products")

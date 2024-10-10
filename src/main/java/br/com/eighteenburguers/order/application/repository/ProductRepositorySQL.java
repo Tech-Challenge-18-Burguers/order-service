@@ -9,15 +9,15 @@ import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
-import br.com.eighteenburguers.order.core.PageData;
-import br.com.eighteenburguers.order.core.Pageable;
-import br.com.eighteenburguers.order.core.entity.Category;
-import br.com.eighteenburguers.order.core.entity.Product;
+import br.com.eighteenburguers.order.adapter.ProductMapper;
+import br.com.eighteenburguers.order.core.entity.product.Category;
+import br.com.eighteenburguers.order.core.entity.product.Product;
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
+import br.com.eighteenburguers.order.core.valueobject.pagination.PageData;
+import br.com.eighteenburguers.order.core.valueobject.pagination.Pageable;
 import br.com.eighteenburguers.order.core.valueobject.product.ProductFilter;
 import br.com.eighteenburguers.order.infra.repository.ProductJpaRepository;
 import br.com.eighteenburguers.order.infra.repository.entity.ProductEntity;
-import br.com.eighteenburguers.order.mapper.ProductMapper;
 import lombok.AllArgsConstructor;
 
 @Repository
@@ -56,6 +56,12 @@ public class ProductRepositorySQL implements ProductRepository {
 	@Override
 	public List<Product> findByCategoryId(Category category) {
 		return repository.findByCategory(category).stream().map(mapper::toEntity).toList();
+	}
+	
+	@Override
+	public List<Product> findByIds(List<Long> ids) {
+		List<ProductEntity> entities = repository.findAllById(ids);
+		return entities.stream().map(mapper::toEntity).toList();
 	}
 
 }

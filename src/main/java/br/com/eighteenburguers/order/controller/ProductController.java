@@ -4,20 +4,20 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import br.com.eighteenburguers.order.adapter.ProductMapper;
 import br.com.eighteenburguers.order.adapter.request.ProductRequest;
 import br.com.eighteenburguers.order.adapter.response.ProductResponse;
-import br.com.eighteenburguers.order.core.PageData;
-import br.com.eighteenburguers.order.core.Pageable;
-import br.com.eighteenburguers.order.core.entity.Product;
+import br.com.eighteenburguers.order.core.entity.product.Product;
 import br.com.eighteenburguers.order.core.exception.BusinessException;
-import br.com.eighteenburguers.order.core.usecase.CreateProductUseCase;
-import br.com.eighteenburguers.order.core.usecase.DeleteProductByIdUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductByCategoryUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductByIdUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductsUseCase;
-import br.com.eighteenburguers.order.core.usecase.UpdateProductUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.CreateProductUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.DeleteProductByIdUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByCategoryUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByIdUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductsUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.UpdateProductUseCase;
+import br.com.eighteenburguers.order.core.valueobject.pagination.PageData;
+import br.com.eighteenburguers.order.core.valueobject.pagination.Pageable;
 import br.com.eighteenburguers.order.core.valueobject.product.ProductFilter;
-import br.com.eighteenburguers.order.mapper.ProductMapper;
 import lombok.AllArgsConstructor;
 
 @Component

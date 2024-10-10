@@ -2,7 +2,7 @@ package br.com.eighteenburguers.order.core.valueobject.product;
 
 import java.math.BigDecimal;
 
-import br.com.eighteenburguers.order.core.entity.Category;
+import br.com.eighteenburguers.order.core.entity.product.Category;
 
 public class ProductFilter {
 
