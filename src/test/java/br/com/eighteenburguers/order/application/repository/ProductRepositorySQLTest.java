@@ -17,15 +17,15 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import br.com.eighteenburguers.order.core.PageData;
-import br.com.eighteenburguers.order.core.Pageable;
-import br.com.eighteenburguers.order.core.entity.Category;
-import br.com.eighteenburguers.order.core.entity.Product;
+import br.com.eighteenburguers.order.adapter.ProductMapper;
+import br.com.eighteenburguers.order.core.entity.product.Category;
+import br.com.eighteenburguers.order.core.entity.product.Product;
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
+import br.com.eighteenburguers.order.core.valueobject.pagination.PageData;
+import br.com.eighteenburguers.order.core.valueobject.pagination.Pageable;
 import br.com.eighteenburguers.order.core.valueobject.product.ProductFilter;
 import br.com.eighteenburguers.order.infra.repository.ProductJpaRepository;
 import br.com.eighteenburguers.order.infra.repository.entity.ProductEntity;
-import br.com.eighteenburguers.order.mapper.ProductMapper;
 
 @ExtendWith(MockitoExtension.class)
 class ProductRepositorySQLTest {

@@ -2,7 +2,7 @@ package br.com.eighteenburguers.order.adapter.request;
 
 import java.math.BigDecimal;
 
-import br.com.eighteenburguers.order.core.entity.Category;
+import br.com.eighteenburguers.order.core.entity.product.Category;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;

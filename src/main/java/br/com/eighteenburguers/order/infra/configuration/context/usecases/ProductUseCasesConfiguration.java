@@ -4,18 +4,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
-import br.com.eighteenburguers.order.core.usecase.CreateProductUseCase;
-import br.com.eighteenburguers.order.core.usecase.CreateProductUseCaseImpl;
-import br.com.eighteenburguers.order.core.usecase.DeleteProductByIdUseCase;
-import br.com.eighteenburguers.order.core.usecase.DeleteProductByIdUseCaseImpl;
-import br.com.eighteenburguers.order.core.usecase.FindProductByCategoryUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductByCategoryUseCaseImpl;
-import br.com.eighteenburguers.order.core.usecase.FindProductByIdUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductByIdUseCaseImpl;
-import br.com.eighteenburguers.order.core.usecase.FindProductsUseCase;
-import br.com.eighteenburguers.order.core.usecase.FindProductsUseCaseImpl;
-import br.com.eighteenburguers.order.core.usecase.UpdateProductUseCase;
-import br.com.eighteenburguers.order.core.usecase.UpdateProductUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.CreateProductUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.CreateProductUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.DeleteProductByIdUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.DeleteProductByIdUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByCategoryUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByCategoryUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByIdUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductByIdUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductsUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.FindProductsUseCaseImpl;
+import br.com.eighteenburguers.order.core.usecase.product.UpdateProductUseCase;
+import br.com.eighteenburguers.order.core.usecase.product.UpdateProductUseCaseImpl;
 
 @Configuration
 public class ProductUseCasesConfiguration {

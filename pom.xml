@@ -25,7 +25,8 @@
 			**/mapper/**/*,
 			**/adapter/**/*,
 			**/exception/**/*,
-			**/*Generated*.java
+			**/*Generated*.java,
+			**/OrderApplication.java
 		</sonar.exclusions>
 	</properties>
 	<dependencies>
@@ -116,6 +117,7 @@
 						<exclude>@Generated</exclude>
 						<exclude>**/*Generated*</exclude>
 						<exclude>**/*$*$*</exclude>
+						<exclude>**/OrderApplication.java</exclude>
 					</excludes>
 				</configuration>
 				<executions>
