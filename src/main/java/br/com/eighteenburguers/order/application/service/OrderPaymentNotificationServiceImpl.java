@@ -20,7 +20,7 @@ public class OrderPaymentNotificationServiceImpl extends QueueSqsMessageSender<P
 
 	@Override
 	public void send(Order order) {
-		super.sendMessage(new PaymentRequest(order.getId()), CONTEXT);
+		super.sendMessage(new PaymentRequest(order.getId(), order.getAmount()), CONTEXT);
 	}
 
 }
