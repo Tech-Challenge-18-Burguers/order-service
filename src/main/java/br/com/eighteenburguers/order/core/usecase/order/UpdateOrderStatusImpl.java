@@ -53,6 +53,8 @@ public class UpdateOrderStatusImpl implements UpdateOrderStatus {
 			return current.equals(AWAITING_WITHDRAWAL);
 		case AWAITING_PAYMENT:
 			return current.equals(CREATED);
+		case CANCELED:
+			return current.equals(AWAITING_PAYMENT);
 		default:
 			return false;
 		}

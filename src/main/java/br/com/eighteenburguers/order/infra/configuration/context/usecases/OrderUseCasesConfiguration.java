@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.eighteenburguers.order.core.repository.OrderRepository;
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
+import br.com.eighteenburguers.order.core.service.OrderPaymentNotificationService;
 import br.com.eighteenburguers.order.core.usecase.order.CheckoutOrderUseCase;
 import br.com.eighteenburguers.order.core.usecase.order.CheckoutOrderUseCaseImpl;
 import br.com.eighteenburguers.order.core.usecase.order.CreateOrderUseCase;
@@ -20,8 +21,8 @@ import br.com.eighteenburguers.order.core.usecase.order.UpdateOrderStatusImpl;
 public class OrderUseCasesConfiguration {
 
 	@Bean
-	CheckoutOrderUseCase checkoutOrderUseCase(OrderRepository repository) {
-		return new CheckoutOrderUseCaseImpl(repository);
+	CheckoutOrderUseCase checkoutOrderUseCase(OrderRepository repository, OrderPaymentNotificationService notification) {
+		return new CheckoutOrderUseCaseImpl(repository, notification);
 	}
 	
 	@Bean
