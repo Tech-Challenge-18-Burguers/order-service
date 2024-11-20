@@ -19,12 +19,16 @@ import br.com.eighteenburguers.order.core.entity.order.Order;
 import br.com.eighteenburguers.order.core.exception.BusinessException;
 import br.com.eighteenburguers.order.core.exception.OrderNotFoundException;
 import br.com.eighteenburguers.order.core.repository.OrderRepository;
+import br.com.eighteenburguers.order.core.service.OrderPaymentNotificationService;
 
 @ExtendWith(MockitoExtension.class)
 class CheckoutOrderUseCaseImplTest {
 
 	@Mock
 	OrderRepository repository;
+	
+	@Mock
+	OrderPaymentNotificationService notification;
 	
 	Faker faker;
 
@@ -38,22 +42,22 @@ class CheckoutOrderUseCaseImplTest {
 		
 		Mockito.when(repository.findById(Mockito.anyLong())).thenReturn(Optional.of(mockOrder()));
 		
-		CheckoutOrderUseCase usecase = new CheckoutOrderUseCaseImpl(repository);
+		CheckoutOrderUseCase usecase = new CheckoutOrderUseCaseImpl(repository, notification);
 		usecase.execute(faker.random().nextLong());
 		
 		Mockito.verify(repository, Mockito.times(1)).findById(Mockito.anyLong());
-		Mockito.verify(repository, Mockito.times(1)).save(Mockito.any());
+		Mockito.verify(notification, Mockito.times(1)).send(Mockito.any());
 	}
 
 	@Test
 	void shouldBeNotCheckout() {
 		Mockito.when(repository.findById(Mockito.anyLong())).thenReturn(Optional.empty());
 		
-		CheckoutOrderUseCase usecase = new CheckoutOrderUseCaseImpl(repository);
+		CheckoutOrderUseCase usecase = new CheckoutOrderUseCaseImpl(repository, notification);
 		assertThrows(OrderNotFoundException.class, () -> usecase.execute(faker.random().nextLong()));
 		
 		Mockito.verify(repository, Mockito.times(1)).findById(Mockito.anyLong());
-		Mockito.verify(repository, Mockito.times(0)).save(Mockito.any());
+		Mockito.verify(notification, Mockito.times(0)).send(Mockito.any());
 	}
 	
 	Order mockOrder() {
