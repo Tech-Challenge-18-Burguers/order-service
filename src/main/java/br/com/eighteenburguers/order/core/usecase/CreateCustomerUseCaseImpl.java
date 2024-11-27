@@ -5,6 +5,8 @@ import br.com.eighteenburguers.order.core.exception.BusinessException;
 import br.com.eighteenburguers.order.core.exception.CustomerAlreadyExistsException;
 import br.com.eighteenburguers.order.core.repository.CustomerRepository;
 
+import java.util.Objects;
+
 public class CreateCustomerUseCaseImpl implements CreateCustomerUseCase {
 
     private final CustomerRepository customerRepository;
@@ -17,7 +19,7 @@ public class CreateCustomerUseCaseImpl implements CreateCustomerUseCase {
     public Customer execute(Customer customer) throws BusinessException {
         var createdCustomer = customerRepository.findByDocumentNumber(customer.getDocument());
 
-        if (createdCustomer != null) {
+        if (!Objects.isNull(createdCustomer)) {
             throw new CustomerAlreadyExistsException();
         }
 

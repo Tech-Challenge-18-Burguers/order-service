@@ -1,13 +1,9 @@
 package br.com.eighteenburguers.order.core.usecase;
 
-import br.com.eighteenburguers.order.core.entity.Category;
 import br.com.eighteenburguers.order.core.entity.Customer;
-import br.com.eighteenburguers.order.core.entity.Product;
 import br.com.eighteenburguers.order.core.exception.BusinessException;
 import br.com.eighteenburguers.order.core.exception.CustomerNotFound;
-import br.com.eighteenburguers.order.core.exception.ProductNotExistsException;
 import br.com.eighteenburguers.order.core.repository.CustomerRepository;
-import br.com.eighteenburguers.order.core.repository.ProductRepository;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class FindCustomerUseCaseImplTest {
+class FindCustomerUseCaseImplTest {
     @Mock
     CustomerRepository repository;
 
