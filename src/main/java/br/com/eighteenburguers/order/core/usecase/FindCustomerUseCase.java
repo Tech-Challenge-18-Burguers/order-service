@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface FindCustomerUseCase {
 
-    Optional<Customer> execute(String id) throws BusinessException;
+    Customer execute(String document) throws BusinessException;
 }

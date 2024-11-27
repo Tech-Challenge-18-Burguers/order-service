@@ -1,13 +1,15 @@
 package br.com.eighteenburguers.order.core.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@Data
+@AllArgsConstructor
+@Getter
 public class Customer {
 
-    private String id;
-    private final String document;
-    private final String name;
+    private Long id;
+    private String document;
+    private String name;
     private String email;
 
 }
