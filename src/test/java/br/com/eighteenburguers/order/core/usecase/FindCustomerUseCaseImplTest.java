@@ -37,7 +37,7 @@ class FindCustomerUseCaseImplTest {
     void shouldBeFindCustomerById() throws BusinessException {
         final String document = faker.random().hex();
 
-        Mockito.when(repository.findByDocumentNumber(Mockito.anyString())).thenReturn(Optional.of(mockCustomer(document)));
+        Mockito.when(repository.findByDocumentNumber(Mockito.anyString())).thenReturn(mockCustomer(document));
 
         FindCustomerUseCase usecase = new FindCustomerUseCaseImpl(repository);
         Customer customer = usecase.execute(document);
@@ -54,7 +54,7 @@ class FindCustomerUseCaseImplTest {
 
         final String document = faker.random().hex();
 
-        Mockito.when(repository.findByDocumentNumber(Mockito.anyString())).thenReturn(Optional.empty());
+        Mockito.when(repository.findByDocumentNumber(Mockito.anyString())).thenReturn(null);
 
         FindCustomerUseCase usecase = new FindCustomerUseCaseImpl(repository);
         assertThrows(CustomerNotFound.class, () -> usecase.execute(document));

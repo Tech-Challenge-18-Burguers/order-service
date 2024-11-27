@@ -19,7 +19,7 @@ public class FindCustomerUseCaseImpl implements FindCustomerUseCase {
 
     @Override
     public Customer execute(String document) throws BusinessException {
-        var customer = customerRepository.findByDocumentNumber(document).orElse(null);
+        Customer customer = customerRepository.findByDocumentNumber(document);
 
         if(Objects.isNull(customer)){
             throw new CustomerNotFound();
