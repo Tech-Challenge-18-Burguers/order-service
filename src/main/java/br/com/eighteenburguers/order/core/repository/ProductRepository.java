@@ -3,12 +3,15 @@ package br.com.eighteenburguers.order.core.repository;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.eighteenburguers.order.core.entity.Category;
-import br.com.eighteenburguers.order.core.entity.Product;
+import br.com.eighteenburguers.order.core.entity.product.Category;
+import br.com.eighteenburguers.order.core.entity.product.Product;
+import br.com.eighteenburguers.order.core.valueobject.pagination.PageData;
+import br.com.eighteenburguers.order.core.valueobject.pagination.Pageable;
+import br.com.eighteenburguers.order.core.valueobject.product.ProductFilter;
 
 public interface ProductRepository {
 
-	List<Product> findAll();
+	PageData<Product> findAll(ProductFilter filter, Pageable pageable);
 	
 	Optional<Product> findById(Long id);
 	
@@ -17,4 +20,6 @@ public interface ProductRepository {
 	void delete(Long id);
 	
 	List<Product> findByCategoryId(Category category);
+
+	List<Product> findByIds(List<Long> ids);
 }
