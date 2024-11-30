@@ -7,7 +7,6 @@ import br.com.eighteenburguers.order.core.exception.CustomerNotFound;
 import br.com.eighteenburguers.order.core.repository.CustomerRepository;
 
 import java.util.Objects;
-import java.util.Optional;
 
 public class FindCustomerUseCaseImpl implements FindCustomerUseCase {
 

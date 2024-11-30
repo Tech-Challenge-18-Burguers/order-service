@@ -13,7 +13,6 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -64,7 +63,6 @@ class FindCustomerUseCaseImplTest {
     }
 
     Customer mockCustomer(String document) {
-        Customer customer = new Customer(1L, document, faker.name().fullName(), "mockemail@gmail.com");
-        return customer;
+        return new Customer(1L, document, faker.name().fullName(), "mockemail@gmail.com");
     }
 }

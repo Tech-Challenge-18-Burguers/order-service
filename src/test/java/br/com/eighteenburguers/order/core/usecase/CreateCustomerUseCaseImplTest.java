@@ -37,7 +37,6 @@ class CreateCustomerUseCaseImplTest {
     }
 
     Customer mockCustomer() {
-        Customer customer = new Customer(2L, faker.random().hex(), faker.name().fullName(), "mock@gmail.com");
-        return customer;
+        return new Customer(2L, faker.random().hex(), faker.name().fullName(), "mock@gmail.com");
     }
 }
