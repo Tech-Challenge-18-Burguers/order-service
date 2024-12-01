@@ -75,4 +75,8 @@ jobs:
 
       - name: Deploy to Kubernetes
         run: |
-          kubectl get pods
+          kubectl apply -f k8s/application/order-service-cm.yaml
+          kubectl apply -f k8s/application/order-service-secret.yaml
+          kubectl apply -f k8s/application/order-service-deployment.yaml
+          kubectl apply -f k8s/application/order-service-svc.yaml
+          kubectl apply -f k8s/application/order-service-hpa.yaml
