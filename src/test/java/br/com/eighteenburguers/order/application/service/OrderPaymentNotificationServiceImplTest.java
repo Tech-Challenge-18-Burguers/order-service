@@ -12,7 +12,7 @@ import br.com.eighteenburguers.order.core.service.OrderPaymentNotificationServic
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 
 @ExtendWith(MockitoExtension.class)
-public class OrderPaymentNotificationServiceImplTest {
+class OrderPaymentNotificationServiceImplTest {
 
 	@Mock
 	SqsTemplate template;

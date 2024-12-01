@@ -21,16 +21,16 @@ class PageDataTest {
 
 	@Test
 	void shouldBeCopy() {
-		PageData<String> page = new PageData<String>();
+		PageData<String> page1 = new PageData<String>();
 		PageData<String> page2 = new PageData<String>();
-		page2.copyMetadata(page);
-		assertNotNull(page);
+		page2.copyMetadata(page1);
+		assertNotNull(page1);
 	}
 	
 	@Test
 	void shouldBeFrom() {
 		Page<String> pag = new PageImpl<String>(List.of());
-		PageData<String> page = PageData.from(pag);
-		assertNotNull(page);
+		PageData<String> page1 = PageData.from(pag);
+		assertNotNull(page1);
 	}
 }

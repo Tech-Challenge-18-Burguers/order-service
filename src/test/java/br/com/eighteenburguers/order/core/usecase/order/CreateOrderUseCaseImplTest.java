@@ -27,7 +27,7 @@ import br.com.eighteenburguers.order.core.repository.OrderRepository;
 import br.com.eighteenburguers.order.core.repository.ProductRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class CreateOrderUseCaseImplTest {
+class CreateOrderUseCaseImplTest {
 
 	@Mock
 	OrderRepository orderRepository;
