@@ -72,6 +72,5 @@ jobs:
           aws eks update-kubeconfig --region ${{ secrets.REGION_DEFAULT }} --name ${{ env.CLUSTER_NAME }}
 
       - name: Deploy to Kubernetes
-        uses: actions-hub/kubectl@master  
         run: |
           kubectl get pods
