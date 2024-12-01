@@ -23,7 +23,7 @@
 		<spring.cloud.aws.version>3.0.0</spring.cloud.aws.version>
 		<sonar.exclusions>
 			**/infra/**/*,
-			**/api/**/*,z
+			**/api/**/*,
 			**/mapper/**/*,
 			**/adapter/**/*,
 			**/exception/**/*,
