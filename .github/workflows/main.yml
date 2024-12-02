@@ -7,6 +7,8 @@ on:
 
 env:
   DOCKER_REPOSITORY: order-service
+  REGION_DEFAULT: "us-east-1"
+  CLUSTER_NAME: "18Burguers"
 
 jobs:
   build:
@@ -44,7 +46,26 @@ jobs:
           -Dsonar.projectKey=${{ vars.SONAR_PROJECT_KEY }} \
           -Dsonar.organization=${{ vars.SONAR_ORGANIZATION }} \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+          -Dsonar.branch.name=${{ github.ref_name }}
+
+      - name: Check SonarQube Quality Gate
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
+        run: |
+          echo "Waiting for SonarQube analysis to complete..."
+          sleep 20
+          result=$(curl -u "$SONAR_TOKEN": "https://sonarcloud.io/api/qualitygates/project_status?projectKey=$SONAR_PROJECT_KEY")
+          status=$(echo "$result" | jq -r '.projectStatus.status')
+
+          echo "SonarQube Quality Gate status: $status"
+          if [ "$status" != "OK" ]; then
+              echo "SonarQube Quality Gate failed"
+              exit 1
+          else
+              echo "SonarQube Quality Gate passed"
+          fi
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -58,3 +79,23 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_REPOSITORY }}:latest
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ secrets.REGION_DEFAULT }}
+
+      - name: Update kubeconfig
+        run: |
+          aws eks update-kubeconfig --region ${{ secrets.REGION_DEFAULT }} --name ${{ env.CLUSTER_NAME }}
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/application/order-service-cm.yaml
+          kubectl apply -f k8s/application/order-service-secret.yaml
+          kubectl apply -f k8s/application/order-service-deployment.yaml
+          kubectl apply -f k8s/application/order-service-svc.yaml
+          kubectl apply -f k8s/application/order-service-hpa.yaml
