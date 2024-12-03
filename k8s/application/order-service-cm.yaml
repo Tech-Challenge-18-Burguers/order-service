@@ -5,3 +5,4 @@ metadata:
 data:
   DB_CONN_STR: jdbc:postgresql://postgres-svc.default.svc.cluster.local:5432/18Burguers
   ORDER_QUEUE: order-queue
+  DB_USERNAME: orderdbuser
